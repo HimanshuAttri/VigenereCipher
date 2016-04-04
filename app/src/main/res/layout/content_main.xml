@@ -11,6 +11,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.himanshu.app.vigenere_cipher.MainActivity.MainActivity"
     tools:showIn="@layout/activity_main"
+    android:background="#FFB74D"
     >
 
 
@@ -73,7 +74,7 @@
         android:text="By Himanshu Attri"
         android:layout_marginTop="300dp"
         android:textStyle="bold"
-        android:textColor="#FFFAD504"
+        android:textColor="#b9a011"
         android:id="@+id/tv23"/>
 
 </RelativeLayout>

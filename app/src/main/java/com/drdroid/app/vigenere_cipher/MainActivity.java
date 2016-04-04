@@ -8,11 +8,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
-    String str;
+    String str1,str2,str3;
     ToggleButton tgb;
     EditText etk,etm;
 
@@ -29,16 +30,21 @@ public class MainActivity extends AppCompatActivity {
         return res;
     }
 
-    static String decrypt(String text, final String key) {
-        String res = "";
-        text = text.toUpperCase();
-        for (int i = 0, j = 0; i < text.length(); i++) {
-            char c = text.charAt(i);
-            if (c < 'A' || c > 'Z') continue;
-            res += (char)((c - key.charAt(j) + 26) % 26 + 'A');
-            j = ++j % key.length();
+    public String decrypt(String cipherText,String theKey)
+    {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < cipherText.length(); i++) {
+            char c = cipherText.charAt(i);
+            if (c >= 32) {
+                int keyCharValue = theKey.charAt(i % theKey.length()) - 'A';
+                c -= keyCharValue;
+                if (c < 32) {
+                    c = (char) (c + 126 - 32);
+                }
+            }
+            sb.append(c);
         }
-        return res;
+        return sb.toString();
     }
 
     @Override
@@ -51,16 +57,32 @@ public class MainActivity extends AppCompatActivity {
           etm=(EditText) findViewById(R.id.m);
           etk=(EditText) findViewById(R.id.k);
         tgb= (ToggleButton) findViewById(R.id.tb1);
+        fab.setBackgroundColor(R.color.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                try {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                } catch (Exception e) {
+                    // TODO: handle exception
+                }
                 if(tgb.isChecked()==true)
                 {
 
-                   str= decrypt(etm.getText().toString(), etk.getText().toString());
+                   str1= etm.getText().toString();
+                    str2=etk.getText().toString();
+                    str3=decrypt(str1,str2);
+                }
+                if(tgb.isChecked()==false)
+                {
+
+                    str1= etm.getText().toString();
+                    str2=etk.getText().toString();
+                    str3=encrypt(str1,str2);
                 }
 
-                Snackbar.make(view, str, Snackbar.LENGTH_LONG)
+                Snackbar.make(view,"Message: "+ str3, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 //
             }
