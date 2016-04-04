@@ -56,11 +56,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(tgb.isChecked()==true)
                 {
+
                    str= decrypt(etm.getText().toString(), etk.getText().toString());
                 }
 
                 Snackbar.make(view, str, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                //
             }
         });
 
