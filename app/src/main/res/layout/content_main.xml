@@ -13,15 +13,23 @@
     tools:showIn="@layout/activity_main"
     android:background="#FFB74D"
     >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cry"
+        android:id="@+id/img"
+        android:layout_marginTop="30dp"
+        />
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="100"
-        android:layout_below="@+id/tv1"
-        android:id="@+id/ll1">
+
+        android:id="@+id/ll1"
+        >
 
         <TextView
             android:layout_width="match_parent"
@@ -74,7 +82,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="By Himanshu Attri"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="450dp"
         android:textStyle="bold"
         android:textColor="#b9a011"
         android:id="@+id/tv23"/>

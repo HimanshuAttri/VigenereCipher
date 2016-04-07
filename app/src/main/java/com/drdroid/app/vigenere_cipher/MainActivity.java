@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
@@ -83,12 +84,12 @@ public class MainActivity extends AppCompatActivity {
                     str3=encrypt(str1,str2);
                 }
 
-                Snackbar.make(view,"Message: "+ str3, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                Toast.makeText(getApplicationContext(),"Message: "+ str3,
+                        Toast.LENGTH_LONG).show();
 
 
-
-                }
+            }
                 //
 
         });
