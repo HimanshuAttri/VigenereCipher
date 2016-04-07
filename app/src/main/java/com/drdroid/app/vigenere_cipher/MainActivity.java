@@ -1,5 +1,7 @@
 package com.drdroid.app.vigenere_cipher;
 
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
+    NotificationManager manager;
+    Notification myNotication;
     String str1,str2,str3;
     ToggleButton tgb;
     EditText etk,etm;
@@ -30,21 +34,16 @@ public class MainActivity extends AppCompatActivity {
         return res;
     }
 
-    public String decrypt(String cipherText,String theKey)
-    {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < cipherText.length(); i++) {
-            char c = cipherText.charAt(i);
-            if (c >= 32) {
-                int keyCharValue = theKey.charAt(i % theKey.length()) - 'A';
-                c -= keyCharValue;
-                if (c < 32) {
-                    c = (char) (c + 126 - 32);
-                }
-            }
-            sb.append(c);
+    static String decrypt(String text, final String key) {
+        String res = "";
+        text = text.toUpperCase();
+        for (int i = 0, j = 0; i < text.length(); i++) {
+            char c = text.charAt(i);
+            if (c < 'A' || c > 'Z') continue;
+            res += (char)((c - key.charAt(j) + 26) % 26 + 'A');
+            j = ++j % key.length();
         }
-        return sb.toString();
+        return res;
     }
 
     @Override
@@ -67,25 +66,31 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     // TODO: handle exception
                 }
+                str1= etm.getText().toString();
+                str2=etk.getText().toString();
+                str1=str1.toUpperCase();
+                str2=str2.toUpperCase();
                 if(tgb.isChecked()==true)
                 {
 
-                   str1= etm.getText().toString();
-                    str2=etk.getText().toString();
+
                     str3=decrypt(str1,str2);
                 }
                 if(tgb.isChecked()==false)
                 {
 
-                    str1= etm.getText().toString();
-                    str2=etk.getText().toString();
+
                     str3=encrypt(str1,str2);
                 }
 
                 Snackbar.make(view,"Message: "+ str3, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+
+
+                }
                 //
-            }
+
         });
 
     }

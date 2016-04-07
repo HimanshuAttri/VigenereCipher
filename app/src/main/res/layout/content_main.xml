@@ -37,7 +37,8 @@
             android:hint="Messsage"
             android:layout_below="@+id/tv1"
             android:id="@+id/m"
-            android:layout_weight="20"/>
+            android:layout_weight="20"
+            android:inputType="textCapCharacters"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -57,7 +58,8 @@
             android:layout_height="wrap_content"
             android:hint="Key"
             android:id="@+id/k"
-            android:layout_weight="20"/>
+            android:layout_weight="20"
+            android:inputType="textCapCharacters"/>
     </LinearLayout>
     <ToggleButton
         android:layout_width="wrap_content"
