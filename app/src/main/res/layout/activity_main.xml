@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:layout_marginLeft="300dp"
-        android:src="@android:drawable/ic_menu_send" />
+        android:src="@drawable/fab" />
+
 
 </android.support.design.widget.CoordinatorLayout>

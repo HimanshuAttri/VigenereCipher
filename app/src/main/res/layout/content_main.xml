@@ -11,7 +11,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.himanshu.app.vigenere_cipher.MainActivity.MainActivity"
     tools:showIn="@layout/activity_main"
-    android:background="#FFB74D"
+    android:background="@drawable/bg1"
     >
     <ImageView
         android:layout_width="wrap_content"
@@ -77,14 +77,12 @@
         android:textOn="Decrypt"
         android:layout_marginTop="150dp"
         android:id="@+id/tb1"/>
-    <TextView
-        android:layout_width="match_parent"
+
+    <ImageView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="By Himanshu Attri"
-        android:layout_marginTop="450dp"
-        android:textStyle="bold"
-        android:textColor="#b9a011"
-        android:id="@+id/tv23"/>
+        android:src="@drawable/about"
+        android:layout_marginTop="460dp"
+        android:id="@+id/about"/>
 
 </RelativeLayout>
