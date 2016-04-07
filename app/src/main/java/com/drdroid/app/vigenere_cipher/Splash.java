@@ -1,22 +1,13 @@
-import android.os.Handler;
+package com.drdroid.app.vigenere_cipher;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.app.Activity;
 
-import com.drdroid.app.vigenere_cipher.MainActivity;
-import com.drdroid.app.vigenere_cipher.R;
-
-
-/**
- * Created by himanshu-sys on 4/4/16.
- */
 public class Splash extends MainActivity {
     Animation myAnimation;
     TextView myText;
@@ -31,7 +22,7 @@ public class Splash extends MainActivity {
 
         myAnimation = AnimationUtils.loadAnimation(this, R.anim.myani);
 
-        myText.setOnClickListener(new OnClickListener() {
+        myText.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -50,10 +41,10 @@ public class Splash extends MainActivity {
 
         new android.os.Handler().postDelayed(new Runnable() {
 
-            /*
-             * Showing splash screen with a timer. This will be useful when you
-             * want to show case your app logo / company
-             */
+                /*
+                 * Showing splash screen with a timer. This will be useful when you
+                 * want to show case your app logo / company
+                 */
 
             @Override
             public void run() {
