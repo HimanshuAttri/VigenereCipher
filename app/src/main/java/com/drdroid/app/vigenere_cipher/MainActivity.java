@@ -2,6 +2,8 @@ package com.drdroid.app.vigenere_cipher;
 
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -10,6 +12,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.ClipboardManager;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,7 +24,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+
 public class MainActivity extends AppCompatActivity {
+
+
+
     int i;
 
 
@@ -80,12 +87,25 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                
+
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.himanshuattri.com"));
                 startActivity(browserIntent);
 
             }
         });
+        if(tgb.isChecked()==true)
+        {
+
+
+            fab.setImageResource(R.drawable.lock);
+        }
+        if(tgb.isChecked()==false)
+        {
+
+
+            fab.setImageResource(R.drawable.olock);
+
+        }
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,16 +120,13 @@ public class MainActivity extends AppCompatActivity {
                 str2=etk.getText().toString();
                 str1=str1.toUpperCase();
                 str2=str2.toUpperCase();
+
                 if(tgb.isChecked()==true)
                 {
-
-
                     str3=decrypt(str1,str2);
                 }
                 if(tgb.isChecked()==false)
                 {
-
-
                     str3=encrypt(str1,str2);
                 }
 
@@ -117,6 +134,18 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Message: "+ str3,
                         Toast.LENGTH_LONG).show();
 
+                int sdk = android.os.Build.VERSION.SDK_INT;
+                if(sdk < android.os.Build.VERSION_CODES.HONEYCOMB) {
+                    android.text.ClipboardManager clipboard = (android.text.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                    clipboard.setText(str3);
+                } else {
+                    android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                    android.content.ClipData clip = android.content.ClipData.newPlainText("text label",str3);
+                    clipboard.setPrimaryClip(clip);
+                }
+
+                Toast.makeText(getApplicationContext(), "Message Has Been Copied To Clipboard. Hope You Remember The Key.",
+                        Toast.LENGTH_LONG).show();
 
             }
                 //
