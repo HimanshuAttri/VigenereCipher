@@ -30,12 +30,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     int i;
+    String mode ="e";
+
 
 
     NotificationManager manager;
     Notification myNotication;
     String str1,str2,str3;
-    ToggleButton tgb;
+
     EditText etk,etm;
     ImageView iabout;
 
@@ -66,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         final Animation myAnimation;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -75,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
           etm=(EditText) findViewById(R.id.m);
           etk=(EditText) findViewById(R.id.k);
         iabout=(ImageView)findViewById(R.id.about);
-        tgb= (ToggleButton) findViewById(R.id.tb1);
+
         fab.setBackgroundColor(R.color.fab);
         myAnimation = AnimationUtils.loadAnimation(this, R.anim.myani);
         iabout.setOnClickListener(new View.OnClickListener() {
@@ -93,13 +97,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        if(tgb.isChecked()==true)
+        if(mode=="d")
         {
 
 
             fab.setImageResource(R.drawable.lock);
         }
-        if(tgb.isChecked()==false)
+        if(mode=="e")
         {
 
 
@@ -121,11 +125,11 @@ public class MainActivity extends AppCompatActivity {
                 str1=str1.toUpperCase();
                 str2=str2.toUpperCase();
 
-                if(tgb.isChecked()==true)
+                if(mode=="d")
                 {
                     str3=decrypt(str1,str2);
                 }
-                if(tgb.isChecked()==false)
+                if(mode=="e")
                 {
                     str3=encrypt(str1,str2);
                 }

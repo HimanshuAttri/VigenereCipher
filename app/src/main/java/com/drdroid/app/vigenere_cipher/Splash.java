@@ -2,6 +2,7 @@ package com.drdroid.app.vigenere_cipher;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -29,32 +30,16 @@ public class Splash extends MainActivity {
                 myText.startAnimation(myAnimation);
             }
         });
-        try {
-            Thread.sleep(1000);
-        } catch(InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
 
+        Handler h=new Handler();
+        h.postDelayed(new Runnable() {
 
-        LogoV.startAnimation(myAnimation);
-
-
-        new android.os.Handler().postDelayed(new Runnable() {
-
-                /*
-                 * Showing splash screen with a timer. This will be useful when you
-                 * want to show case your app logo / company
-                 */
-
-            @Override
             public void run() {
-                // This method will be executed once the timer is over
-                // Start your app main activity
-                Intent i = new Intent(Splash.this, MainActivity.class);
-                startActivity(i);
-
-                // close this activity
+                // TODO Auto-generated method stub
+                startActivity(new Intent(Splash.this,Option.class));
                 finish();
             }
-        }, 5000);
-    } }
+        }, 2000);
+    }
+
+    }

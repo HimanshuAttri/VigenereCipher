@@ -69,14 +69,7 @@
             android:layout_weight="20"
             android:inputType="textCapCharacters"/>
     </LinearLayout>
-    <ToggleButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/k"
-        android:textOff="Encrypt"
-        android:textOn="Decrypt"
-        android:layout_marginTop="150dp"
-        android:id="@+id/tb1"/>
+
 
     <ImageView
         android:layout_width="wrap_content"
@@ -85,5 +78,6 @@
         android:layout_marginRight="280dp"
         android:layout_marginTop="460dp"
         android:id="@+id/about"/>
+
 
 </RelativeLayout>
