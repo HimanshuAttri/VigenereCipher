@@ -28,8 +28,6 @@ public class Option extends Activity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.option);
 
 
@@ -64,6 +62,7 @@ public class Option extends Activity {
 
                 //Option Activity Starts Here
                 Intent i = new Intent(getBaseContext(), MainActivity.class);
+                i.putExtra("mode", 0);
 
 
                 startActivity(i);
@@ -75,8 +74,9 @@ public class Option extends Activity {
             public void onClick(View v) {
 
 
-                //Option Activity Starts Here
+             
                 Intent i = new Intent(getBaseContext(), MainActivity.class);
+               i.putExtra("mode", 1);
 
                 startActivity(i);
 

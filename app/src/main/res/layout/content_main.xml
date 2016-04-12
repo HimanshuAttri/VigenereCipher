@@ -18,8 +18,18 @@
         android:layout_height="wrap_content"
         android:src="@drawable/cry"
         android:id="@+id/img"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="80dp"
         />
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Vigenere Cipher"
+        android:textAlignment="center"
+        android:textColor="@color/md_deep_orange_A200"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:id="@+id/head1"
+        android:layout_marginBottom="10dp"/>
 
 
     <LinearLayout
@@ -27,9 +37,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="100"
-
+        android:layout_marginTop="20dp"
         android:id="@+id/ll1"
+        android:layout_below="@+id/head1"
+        android:layout_marginBottom="3dp"
+        android:animateLayoutChanges="true"
         >
+
 
         <TextView
             android:layout_width="match_parent"
@@ -41,12 +55,14 @@
         <EditText
 
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Messsage"
+            android:layout_height="35dp"
+            android:hint="Phrase: "
             android:layout_below="@+id/tv1"
             android:id="@+id/m"
             android:layout_weight="20"
-            android:inputType="textCapCharacters"/>
+            android:inputType="textCapCharacters"
+            android:background="#ffffff"
+            android:selectAllOnFocus="true" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,6 +70,7 @@
         android:orientation="horizontal"
         android:weightSum="100"
         android:layout_below="@id/ll1">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,17 +84,19 @@
             android:hint="Key"
             android:id="@+id/k"
             android:layout_weight="20"
-            android:inputType="textCapCharacters"/>
+            android:inputType="textCapCharacters"
+            android:background="#ffffff"/>
     </LinearLayout>
 
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ai2"
+        android:src="@drawable/about"
         android:layout_marginRight="280dp"
         android:layout_marginTop="460dp"
         android:id="@+id/about"/>
+
 
 
 </RelativeLayout>

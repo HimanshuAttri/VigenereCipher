@@ -21,6 +21,7 @@ import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -29,8 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    int i;
-    String mode ="e";
+
+
+
 
 
 
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText etk,etm;
     ImageView iabout;
+
 
 
     static String encrypt(String text, final String key) {
@@ -73,12 +76,16 @@ public class MainActivity extends AppCompatActivity {
         final Animation myAnimation;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
           etm=(EditText) findViewById(R.id.m);
           etk=(EditText) findViewById(R.id.k);
         iabout=(ImageView)findViewById(R.id.about);
+
 
         fab.setBackgroundColor(R.color.fab);
         myAnimation = AnimationUtils.loadAnimation(this, R.anim.myani);
@@ -87,9 +94,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "This App is developed by Himanshu Attri         Under Graduate at NSIT COE branch.                    Contact : attri.him@gmail.com",
                         Toast.LENGTH_LONG).show();
 
-                    iabout.startAnimation(myAnimation);
-
-
+                iabout.startAnimation(myAnimation);
 
 
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.himanshuattri.com"));
@@ -97,19 +102,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        if(mode=="d")
-        {
 
 
-            fab.setImageResource(R.drawable.lock);
-        }
-        if(mode=="e")
-        {
-
-
-            fab.setImageResource(R.drawable.olock);
-
-        }
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,11 +119,21 @@ public class MainActivity extends AppCompatActivity {
                 str1=str1.toUpperCase();
                 str2=str2.toUpperCase();
 
-                if(mode=="d")
+
+                int value = getMode();
+
+
+
+
+
+                if(value==1)
                 {
-                    str3=decrypt(str1,str2);
+
+
+                    str3=decrypt(str1, str2);
+
                 }
-                if(mode=="e")
+                else if(value==0)
                 {
                     str3=encrypt(str1,str2);
                 }
@@ -178,5 +182,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public int getMode()
+    {
+         Bundle extras = getIntent().getExtras();
+
+        int val = extras.getInt("mode");
+        return val;
     }
 }
